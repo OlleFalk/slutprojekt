@@ -8,13 +8,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EdgeLedger</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="./css//utilities.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body id="home">
     <header class="hero">
-        <div id="navbar" class="navbar">
+        <div id="navbar" class="navbar top">
             <h1 class="logo">
                 <span class="text-primary"><i class="fas fa-book-open"></i> Edge</span>Ledger
             </h1>
@@ -25,13 +26,13 @@
                     <li><a href="#cases">Cases</a></li>
                     <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">Contact</a></li>
-                </ul> 
+                </ul>
             </nav>
         </div>
 
         <div class="content">
             <h1>The Sky Is The Limit</h1>
-            <p>We provide world class financial assistance</p> 
+            <p>We provide world class financial assistance</p>
             <a href="#about" class="btn"><i class="fas fa-chevron-right"></i> Read more</a>
         </div>
     </header>
@@ -78,7 +79,7 @@
                         <h2>We provide bespoke solutions</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dicta, a reiciendis neque repudiandae eum et nesciunt perferendis voluptatibus asperiores?</p>
                         <a href="#" class="btn btn-outline">
-                            <i class="fas fa-chevron"></i> 
+                            <i class="fas fa-chevron"></i>
                             Read More
                         </a>
                     </div>
@@ -126,8 +127,8 @@
                         <h4>May 17 2021</h4>
                         <h2>Blog Post One</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dicta, a reiciendis neque repudiandae eum et nesciunt perferendis voluptatibus asperiores?</p>
-                        <a href="#" class="btn btn-outline">
-                            <i class="fas fa-chevron"></i> 
+                        <a href="blog.html" class="btn btn-outline">
+                            <i class="fas fa-chevron"></i>
                             Read Our Blog
                         </a>
                     </div>
@@ -145,7 +146,7 @@
             <div class="flex-items">
                 <div>
                     <img src="./bilder/team/person1.jpg" alt="">
-                    <h4>John doe</h4>
+                    <h4>John Doe</h4>
                     <p>President</p>
                 </div>
                 <div>
@@ -171,7 +172,7 @@
                 </div>
                 <div class="column">
                     <div class="column-2 bg-light">
-                        <h2>Request Callback</h2>
+                        <h2>Request callback</h2>
                         <form action="" class="callback-form">
                             <div class="form-control">
                                 <label for="name"></label>
@@ -196,11 +197,49 @@
     <footer class="footer bg-dark">
         <div class="social">
             <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-            <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://www.instagram.com/olleflk/"><i class="fab fa-instagram fa-2x"></i></a>
             <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
             <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
         </div>
         <p>Copyright &copy; 2021 - EdgeLedger</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        let scrolled = false;
+
+        window.onscroll = function() {
+            if (window.pageYOffset > 100) {
+                navbar.classList.remove('top');
+                if (!scrolled) {
+                    navbar.style.transform = 'translateY(-70px)';
+                }
+                setTimeout(function() {
+                    navbar.style.transform = 'translateY(0)';
+                    scrolled = true;
+                }, 200);
+            } else {
+                navbar.classList.add('top');
+                scrolled = false;
+            }
+        }
+
+        /* Smooth Scrolling */
+        $('#navbar a, .btn').on('click', function(e) {
+            if (this.hash !== '') {
+                e.preventDefault();
+
+                const hash = this.hash;
+
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top - 100,  
+                }, 
+                800
+                )
+            }
+        })
+    </script>
 </body>
 </html>
